@@ -1,0 +1,33 @@
+name: Run Prediksi & Togel
+
+on:
+  schedule:
+    # jalan tiap 3 jam sekali
+    - cron: "0 */3 * * *"
+  workflow_dispatch: # biar bisa manual run
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install requests beautifulsoup4 playwright
+          playwright install chromium
+
+      - name: Run prediksi.py
+        run: |
+          python prediksi.py
+
+      - name: Run togel.py
+        run: |
+          python togel.py

@@ -1,28 +1,28 @@
-name: Run Prediksi & Togel
+name: Run Prediksi & Togel Scraper
 
 on:
+  workflow_dispatch:   # bisa dijalankan manual dari GitHub UI
   schedule:
-    # jalan tiap 3 jam sekali
-    - cron: "0 */3 * * *"
-  workflow_dispatch: # biar bisa manual run
+    - cron: "0 */3 * * *"   # jalan tiap 3 jam sekali
 
 jobs:
-  run-script:
+  run-scraper:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install requests beautifulsoup4 playwright
-          playwright install chromium
+          playwright install --with-deps chromium
 
       - name: Run prediksi.py
         run: |

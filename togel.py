@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs
 from playwright.sync_api import sync_playwright
 
 # upload target
-UPLOAD_URL = "https://coba.gbg-coc.org/upload.php"
+UPLOAD_URL = "https://prediksi.gbg-coc.org/upload.php"
 
 # === Playwright helpers ===
 def get_prediksi_links(page, url):
@@ -46,7 +46,7 @@ def clean_html(html_raw):
     html = re.sub(r'href=["\']css/', 'href="https://olx29.ramalan.info/css/', html)
     html = re.sub(r'src=["\']images/', 'src="https://olx29.ramalan.info/images/', html)
     html = re.sub(r'href=["\']images/', 'href="https://olx29.ramalan.info/images/', html)
-    html = re.sub(r'href=["\']\?page=', 'href="https://coba.gbg-coc.org/?page=', html)
+    html = re.sub(r'href=["\']\?page=', 'href="https://prediksi.gbg-coc.org/?page=', html)
     html = re.sub(r'<form[\s\S]*?<select[^>]*id=["\']selectprediksi["\'][\s\S]*?</form>', '', html, flags=re.IGNORECASE)
     html = re.sub(r' Dari Bandar OLXTOTO', '', html)
     html = re.sub(r'OLXTOTO', '', html)
@@ -64,7 +64,7 @@ def clean_html(html_raw):
     # ubah blok Live draw ... Panduan jadi single Prediksi Togel link
     html = re.sub(
         r'<a[^>]*href=["\']https://prediksi\.gbg-coc\.org/\?page=livedraw-togel["\'][^>]*>Live draw</a>.*?<a[^>]*href=["\']https://surkale\.me/ZcYzfO[^"\']*["\'][^>]*>Panduan</a>',
-        '<a class="nav-link active" href="https://coba.gbg-coc.org/?page=prediksi-togel">Prediksi Togel</a>',
+        '<a class="nav-link active" href="https://prediksi.gbg-coc.org/?page=prediksi-togel">Prediksi Togel</a>',
         html,
         flags=re.DOTALL | re.IGNORECASE
     )

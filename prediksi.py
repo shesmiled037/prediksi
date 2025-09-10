@@ -139,7 +139,7 @@ if __name__ == "__main__":
         cleaned_html = clean_html(raw_html)
 
         # --- Upload langsung tanpa simpan file lokal ---
-        url_upload = "https://coba.gbg-coc.org/upload.php"
+        url_upload = "https://prediksi.gbg-coc.org/upload.php"
         src_url = f"https://olx29.ramalan.info/?page=prediksi-togel&no={page_num}"
         try:
             response = requests.post(
